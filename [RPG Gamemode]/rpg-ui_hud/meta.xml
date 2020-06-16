@@ -1,0 +1,50 @@
+<meta>
+    <info author="XeN" version="1.0" name="Gamemode zbudowany w oparciu o zasób core" type="script" />
+    <script src="c.lua" type="client" cache="false" />
+
+    <file src="img/guns/1.png" type="client" />
+    <file src="img/guns/2.png" type="client" />
+    <file src="img/guns/3.png" type="client" />
+    <file src="img/guns/4.png" type="client" />
+	<file src="img/guns/5.png" type="client" />
+	<file src="img/guns/6.png" type="client" />
+	<file src="img/guns/7.png" type="client" />
+	<file src="img/guns/8.png" type="client" />
+	<file src="img/guns/9.png" type="client" />
+	<file src="img/guns/10.png" type="client" />
+	<file src="img/guns/11.png" type="client" />
+	<file src="img/guns/12.png" type="client" />
+	<file src="img/guns/14.png" type="client" />
+	<file src="img/guns/15.png" type="client" />
+	<file src="img/guns/16.png" type="client" />
+	<file src="img/guns/17.png" type="client" />
+	<file src="img/guns/18.png" type="client" />
+	<file src="img/guns/22.png" type="client" />
+	<file src="img/guns/23.png" type="client" />
+	<file src="img/guns/24.png" type="client" />
+	<file src="img/guns/25.png" type="client" />
+	<file src="img/guns/26.png" type="client" />
+	<file src="img/guns/27.png" type="client" />
+	<file src="img/guns/28.png" type="client" />
+	<file src="img/guns/29.png" type="client" />
+	<file src="img/guns/30.png" type="client" />
+	<file src="img/guns/31.png" type="client" />
+	<file src="img/guns/32.png" type="client" />
+	<file src="img/guns/33.png" type="client" />
+	<file src="img/guns/34.png" type="client" />
+	<file src="img/guns/35.png" type="client" />
+	<file src="img/guns/36.png" type="client" />
+	<file src="img/guns/37.png" type="client" />
+	<file src="img/guns/38.png" type="client" />
+	<file src="img/guns/39.png" type="client" />
+	<file src="img/guns/40.png" type="client" />
+	<file src="img/guns/41.png" type="client" />
+	<file src="img/guns/42.png" type="client" />
+	<file src="img/guns/43.png" type="client" />
+	<file src="img/guns/44.png" type="client" />
+	<file src="img/guns/45.png" type="client" />
+	<file src="img/guns/46.png" type="client" />
+
+    <export function="isPlayerHudVisible" type="client" />
+    <export function="setPlayerHudVisible" type="client" />
+</meta>
