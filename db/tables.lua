@@ -30,6 +30,23 @@ local tables = {
       `color` int(11) NOT NULL,
       PRIMARY KEY (`id`)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci
+   ]],
+   ["groups"] = [[
+    CREATE TABLE IF NOT EXISTS `%s` (
+      `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'group id',
+      `name` varchar(40) COLLATE utf8_polish_ci NOT NULL,
+      `inherit` varchar(200) COLLATE utf8_polish_ci DEFAULT NULL COMMENT 'id grup po przecinku',
+      PRIMARY KEY (`id`)
+     ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci 
+   ]],
+   ["groupPrivilages"] = [[
+    CREATE TABLE IF NOT EXISTS `%s` (
+      `id` int(11) NOT NULL AUTO_INCREMENT,
+      `groupId` int(11) NOT NULL,
+      `action` varchar(40) COLLATE utf8_polish_ci NOT NULL,
+      `access` enum('true','false') COLLATE utf8_polish_ci NOT NULL DEFAULT 'false',
+      PRIMARY KEY (`id`)
+     ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci     
    ]]
 }
 

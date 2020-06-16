@@ -6,6 +6,8 @@
 
 	<script src="players/accounts.lua" type="server"></script>
   
+	<script src="privilages.lua" type="server"></script>
+
 	<script src="fractions/fractions.lua" type="server"></script>
   
   <export function="getAccountIdByLogin" type="server"></export>
