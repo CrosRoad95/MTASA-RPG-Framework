@@ -11,7 +11,7 @@ local tables = {
       `registerTs` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'data rejestracji',
       `lastUsed` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'data ostatniego logowania',
       PRIMARY KEY (`id`)
-     ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci
+     ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci
   ]],
   ["accountsDatas"] = [[
     CREATE TABLE IF NOT EXISTS `%s` (
@@ -28,8 +28,35 @@ local tables = {
       `name` varchar(120) COLLATE utf8_polish_ci NOT NULL,
       `shortcut` varchar(6) COLLATE utf8_polish_ci NOT NULL,
       `color` int(11) NOT NULL,
+      `privilagesGroup` int(11) NOT NULL,
       PRIMARY KEY (`id`)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci
+   ]],
+   ["fractionsmembers"] = [[
+    CREATE TABLE IF NOT EXISTS `%s` (
+      `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'member id',
+      `fid` int(11) NOT NULL COMMENT 'fraction id',
+      `pid` int(11) NOT NULL COMMENT 'player id',
+      PRIMARY KEY (`id`)
+     ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci     
+   ]],
+   ["fractionsranks"] = [[
+    CREATE TABLE IF NOT EXISTS `%s` (
+      `id` int(11) NOT NULL AUTO_INCREMENT,
+      `rankId` int(11) NOT NULL,
+      `valuekey` varchar(30) COLLATE utf8_polish_ci NOT NULL,
+      `value` text COLLATE utf8_polish_ci NOT NULL,
+      PRIMARY KEY (`id`)
+     ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci     
+   ]],
+   ["fractionsmembersdata"] = [[
+    CREATE TABLE IF NOT EXISTS %s (
+      `id` int(11) NOT NULL AUTO_INCREMENT,
+      `memberId` int(11) NOT NULL,
+      `valueKey` varchar(64) NOT NULL,
+      `value` text NOT NULL,
+      PRIMARY KEY (`id`)
+     ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci     
    ]],
    ["groups"] = [[
     CREATE TABLE IF NOT EXISTS `%s` (
@@ -37,7 +64,7 @@ local tables = {
       `name` varchar(40) COLLATE utf8_polish_ci NOT NULL,
       `inherit` varchar(200) COLLATE utf8_polish_ci DEFAULT NULL COMMENT 'id grup po przecinku',
       PRIMARY KEY (`id`)
-     ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci 
+     ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci 
    ]],
    ["groupPrivilages"] = [[
     CREATE TABLE IF NOT EXISTS `%s` (

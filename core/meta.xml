@@ -9,6 +9,8 @@
 	<script src="privilages.lua" type="server"></script>
 
 	<script src="fractions/fractions.lua" type="server"></script>
+	<script src="fractions/members.lua" type="server"></script>
+	<script src="fractions/ranks.lua" type="server"></script>
   
   <export function="getAccountIdByLogin" type="server"></export>
   <export function="getAccountInfo" type="server"></export>
