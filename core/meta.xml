@@ -14,6 +14,10 @@
 
 	<script src="components/components.lua" type="server"></script>
 	<script src="components/saveComponent.lua" type="server"></script>
+
+	<script src="vehicles/vehicles.lua" type="server"></script>
+	<script src="vehicles/types/type.lua" type="server"></script>
+  
   <export function="getAccountIdByLogin" type="server"></export>
   <export function="getAccountInfo" type="server"></export>
   <export function="getLastAccountId" type="server"></export>

@@ -74,6 +74,33 @@ local tables = {
       `access` enum('true','false') COLLATE utf8_polish_ci NOT NULL DEFAULT 'false',
       PRIMARY KEY (`id`)
      ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci     
+   ]],
+   ["vehicles"] = [[
+    CREATE TABLE IF NOT EXISTS `%s` (
+      `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+      `model` smallint(5) unsigned NOT NULL,
+      `type` int(10) unsigned NOT NULL,
+      `typeid` int(10) unsigned NOT NULL,
+      `position` varchar(50) COLLATE utf8_polish_ci DEFAULT NULL 'x,y,z,rx,ry,rz,i,d',
+      `tuning` varchar(200) COLLATE utf8_polish_ci DEFAULT NULL,
+      `color` varchar(47) COLLATE utf8_polish_ci NOT NULL DEFAULT '255,255,255,255,255,255,255,255,255,255,255,255',
+      `colorlights` varchar(11) COLLATE utf8_polish_ci NOT NULL DEFAULT '255,255,255',
+      `paintjob` tinyint(3) unsigned NOT NULL DEFAULT '3',
+      `platetext` varchar(8) COLLATE utf8_polish_ci DEFAULT NULL,
+      `variant` varchar(7) COLLATE utf8_polish_ci NOT NULL DEFAULT '255,255',
+      `panels` varchar(13) COLLATE utf8_polish_ci NOT NULL DEFAULT '0,0,0,0,0,0,0',
+      `doors` varchar(11) COLLATE utf8_polish_ci NOT NULL DEFAULT '0,0,0,0,0,0',
+      `lights` varchar(7) COLLATE utf8_polish_ci NOT NULL DEFAULT '0,0,0,0',
+      `health` smallint(5) unsigned NOT NULL DEFAULT '1000',
+      `mileage` decimal(10,3) NOT NULL DEFAULT '0.000',
+      `fuel` float DEFAULT NULL,
+      `fuelsecondary` float DEFAULT NULL,
+      `fueltype` smallint(5) DEFAULT NULL,
+      `fueltypesecondary` smallint(5) DEFAULT NULL,
+      `upgrades` varchar(40) COLLATE utf8_polish_ci DEFAULT NULL COMMENT 'id ulepszen po przecinku',
+      `wheelstatus` varchar(19) COLLATE utf8_polish_ci NOT NULL DEFAULT '1000,1000,1000,1000',
+      PRIMARY KEY (`id`)
+     ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci
    ]]
 }
 
