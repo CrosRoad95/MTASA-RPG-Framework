@@ -37,21 +37,27 @@ function getLastVehicleId()
 end
 
 function countVehicleByType(vehicleType)
-  local result = exports.db:queryTable("select count(*) as amount froms %s limit 1", "vehicles")
+  local result = exports.db:queryTable("select count(*) as amount from %s where type = ? limit 1", "vehicles", vehicleType)
   if(result and #result > 0)then
-    return result[0].amount
+    return result[1].amount
   end
   return 0
 end
 
-function createNewVehicle(id, vehicleType)
-
-  return getLastVehicleId()
+function createNewVehicle(model, vehicleType)
+  if(type(vehicleType) ~= "number")then
+    vehicleType = 0
+  end
+  if(not isVehicleTypeValid(vehicleType))then
+    return false
+  end
+  local amount = countVehicleByType(vehicleType)
+  exports.db:queryTableFree("insert into %s (model, type)values(?,?)", "vehicles",model, vehicleType)
+  local lastId = getLastVehicleId()
+  exports.db:queryTableFree("update %s set typeid = ? where id = ? limit 1", "vehicles", amount + 1, lastId)
+  return lastId
 end
 
 function spawnVehicle(id,x,y,z,rx,ry,rz,i,d)
 
 end
-
-
-createVehicle(404, 0,0,0)

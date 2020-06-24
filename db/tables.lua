@@ -81,7 +81,7 @@ local tables = {
       `model` smallint(5) unsigned NOT NULL,
       `type` int(10) unsigned NOT NULL,
       `typeid` int(10) unsigned NOT NULL,
-      `position` varchar(50) COLLATE utf8_polish_ci DEFAULT NULL 'x,y,z,rx,ry,rz,i,d',
+      `position` varchar(50) COLLATE utf8_polish_ci DEFAULT NULL COMMENT 'x,y,z,rx,ry,rz,i,d',
       `tuning` varchar(200) COLLATE utf8_polish_ci DEFAULT NULL,
       `color` varchar(47) COLLATE utf8_polish_ci NOT NULL DEFAULT '255,255,255,255,255,255,255,255,255,255,255,255',
       `colorlights` varchar(11) COLLATE utf8_polish_ci NOT NULL DEFAULT '255,255,255',
