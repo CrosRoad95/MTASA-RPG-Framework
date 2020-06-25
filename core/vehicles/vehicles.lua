@@ -58,6 +58,32 @@ function createNewVehicle(model, vehicleType)
   return lastId
 end
 
+function getVehicleOwnerId(vehicleId)
+  local result = exports.db:queryTable("select id from %s where vid = ? and permissions = 0 limit 1", "vehiclesAccess", vehicleId)
+  if(result and #result == 1)then
+    return result[1].id
+  end
+  return false
+end
+
+function getVehicleOwner(vehicleId)
+  local result = exports.db:queryTable("select type,uid from %s where vid = ? and permissions = 0 limit 1", "vehiclesAccess", vehicleId)
+  if(result and #result == 1)then
+    local result = result[1];
+    return {result.type, result.uid}
+  end
+  return false
+end
+
+function setVehicleOwner(vehicleId, t, uid)
+  local id = getVehicleOwnerId(vehicleId)
+  if(id)then
+    exports.db:queryTableFree("update %s set type = ?, uid = ? where id = ? limit 1", "vehiclesAccess", t, uid, id)
+  else
+    exports.db:queryTableFree("insert into %s (vid,type,uid,permissions)values(?,?,?,0)","vehiclesAccess",vehicleId, t, uid)
+  end
+end
+
 function spawnVehicle(id,x,y,z,rx,ry,rz,i,d)
 
 end

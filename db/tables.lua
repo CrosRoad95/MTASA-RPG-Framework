@@ -100,7 +100,17 @@ local tables = {
       `upgrades` varchar(40) COLLATE utf8_polish_ci DEFAULT NULL COMMENT 'id ulepszen po przecinku',
       `wheelstatus` varchar(19) COLLATE utf8_polish_ci NOT NULL DEFAULT '1000,1000,1000,1000',
       PRIMARY KEY (`id`)
-     ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci
+     ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci
+   ]],
+   ["vehiclesAccess"] = [[
+    CREATE TABLE IF NOT EXISTS `%s` (
+      `id` int(11) NOT NULL AUTO_INCREMENT,
+      `vid` int(11) NOT NULL COMMENT 'kolumna `id` pojazdu',
+      `type` int(11) NOT NULL COMMENT 'co ma dostęp',
+      `uid` int(11) NOT NULL COMMENT 'id tego co w danej grupie ma mieć dostęp',
+      `permissions` bigint(20) NOT NULL COMMENT 'binarne flagi, 0=owner',
+      PRIMARY KEY (`id`)
+     ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci
    ]]
 }
 
