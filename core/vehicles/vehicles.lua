@@ -1,6 +1,16 @@
 local _createVehicle = createVehicle
 local vehicles = {}
 local resourcesVehicles = {}
+local spawnedVehicles = {}
+local spawnedVehiclesTypes = {}
+
+function getAllVehicles()
+  local t = {}
+  for vid, vehicle in pairs(spawnedVehicles)do
+    t[#t + 1] = vehicle
+  end
+  return t
+end
 
 local function onResourceStop()
   for i,v in ipairs(resourcesVehicles[source])do
@@ -84,6 +94,57 @@ function setVehicleOwner(vehicleId, t, uid)
   end
 end
 
-function spawnVehicle(id,x,y,z,rx,ry,rz,i,d)
-
+function isVehicleSpawned(vid)
+  return spawnedVehicles[vid] and true or false
 end
+
+function getVehicleByVid(vid)
+  return spawnedVehicles[vid] or false
+end
+
+function spawnVehicle(vid,x,y,z,rx,ry,rz,i,d)
+  if(isVehicleSpawned(vid))then
+    return false;
+  end
+  local result = exports.db:queryTable("select * from %s where id = ? limit 1", "vehicles", vid)
+  if(not result or #result == 0)then
+    return false
+  end
+  if(not i)then
+    i = 0;
+  end
+  if(not d)then
+    d = 0;
+  end
+  local position = {x,y,z,rx,ry,rz,i,d}
+  local dbPosition = {}
+  result = result[1]
+  if(result.position)then
+    result.position = split(result.position, ",")
+    for i,v in ipairs(split(result.position, ","))do
+      dbPosition[i] = tonumber(v)
+    end
+  end
+  for i=1,8 do
+    if(not position[i])then
+      position[i] = dbPosition[i]
+    end
+  end
+  if(not position[1] or not position[2] or not position[3])then
+    return false
+  end
+  local vehicle = createVehicle(result.model,position[1], position[2], position[3], position[4], position[5], position[6])
+  if(not vehicle)then
+    return false
+  end
+  if(not spawnedVehiclesTypes[result.type])then
+    spawnedVehiclesTypes[result.type] = {}
+  end
+  table.insert(spawnedVehiclesTypes[result.type], vehicle)
+  setElementInterior(vehicle, position[7])
+  setElementDimension(vehicle, position[8])
+  setElementData(vehicle, "uid", vid);
+  setElementData(vehicle, "type", result.type);
+  setElementData(vehicle, "typeid", result.typeId);
+end
+
