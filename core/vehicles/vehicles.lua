@@ -102,6 +102,18 @@ function getVehicleByVid(vid)
   return spawnedVehicles[vid] or false
 end
 
+function getTypeVehicle(vehicle)
+  return getElementData(vehicle, "type") or 0
+end
+
+function hasAccessToVehicle(player, vehicle)
+  local result = fireCheckAccessMethod(player, vehicle)
+  if(type(result) == "boolean"))then
+    return result
+  end
+  
+end
+
 function spawnVehicle(vid,x,y,z,rx,ry,rz,i,d)
   if(isVehicleSpawned(vid))then
     return false;
